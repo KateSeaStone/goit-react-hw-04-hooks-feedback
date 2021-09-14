@@ -5,18 +5,25 @@ import s from '../Feedback/Feedback.module.css';
 
 const FeedbackOptions = ({ onLeaveFeedback, options }) => (
   <>
-    {
-      Object.keys(options).map((option) => {
-        return <button key={option} className={s.button} name={option} type="button" onClick={onLeaveFeedback}>{option}</button>
-
-      })
-    }
+    {options.map(option => {
+      return (
+        <button
+          key={option.name}
+          className={s.button}
+          name={option.name}
+          type="button"
+          onClick={onLeaveFeedback}
+        >
+          {option.name}
+        </button>
+      );
+    })}
   </>
-)
+);
 
 export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object.isRequired,
+  options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
